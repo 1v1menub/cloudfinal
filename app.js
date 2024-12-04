@@ -16,6 +16,14 @@ const pool = new Pool({
     port: process.env.DB_PORT || 5432,
 });
 
+
+app.get('/heartbeat', (req, res) => {
+  res.status(200).json({
+    message: "API is alive",
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get('/last-number', async (req, res) => {
     try {
       const result = await pool.query('SELECT id, number, total_sum FROM numbers ORDER BY id DESC LIMIT 1');
