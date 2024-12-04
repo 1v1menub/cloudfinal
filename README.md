@@ -1,4 +1,4 @@
-DB_HOST=cloudfinal-443701:us-central1:cloudfinaldb
+DB_HOST=10.63.176.3
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=1234
