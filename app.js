@@ -1,9 +1,11 @@
-require('dotenv').config(); 
+require('dotenv').config();
 
+var cors = require('cors')
 const express = require('express');
 const { Pool } = require('pg');
 
 const app = express();
+app.use(cors())
 const port = 8080;
 
 app.use(express.json());
