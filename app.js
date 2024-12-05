@@ -135,6 +135,36 @@ app.get('/total-sum', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   });
+
+app.post('/compute-super-heavy-task', (req, res) => {
+  const { number } = req.body;
+
+  if (typeof number !== 'number' || number <= 0) {
+    return res.status(400).json({ error: 'Please provide a positive number.' });
+  }
+
+  try {
+    let result = 0;
+
+    for (let i = 0; i < number * 100000; i++) {
+      for (let j = 0; j < 10; j++) {
+        result += Math.sin(i) * Math.cos(j) + Math.sqrt(i % (j + 1));
+        result *= Math.log(i + 1) + Math.exp(j % 5);
+      }
+    }
+
+    res.json({
+      input: number,
+      computedResult: result,
+      message: `Completed intensive computation for input: ${number}`
+    });
+  } catch (error) {
+    console.error('Error during computation:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
   
 
 app.listen(port, () => {
