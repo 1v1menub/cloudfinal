@@ -16,6 +16,6 @@ COPY . .
 
 EXPOSE 8080
 
-CMD npm start
+CMD ["npm", "start"]
 
 # CMD /usr/local/bin/cloud-sql-proxy cloudfinal-443701:us-central1:cloudfinaldb & npm start
