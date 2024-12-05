@@ -119,9 +119,8 @@ app.get('/total-sum', async (req, res) => {
     try {
       let result = 0;
   
-      // Perform computationally intensive math operations
-      for (let i = 0; i < number * 100000; i++) { // Scales linearly with `number`
-        for (let j = 0; j < 10; j++) { // Small inner loop for additional computation
+      for (let i = 0; i < number * 100000; i++) {
+        for (let j = 0; j < 10; j++) {
           result += Math.sin(i) * Math.cos(j) + Math.sqrt(i % (j + 1));
         }
       }
